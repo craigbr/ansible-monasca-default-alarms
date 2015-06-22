@@ -87,13 +87,14 @@ EXAMPLES = '''
 '''
 
 from ansible.module_utils.basic import *
+import os
 
 try:
     from monascaclient import client
     from monascaclient import ksclient
 except ImportError:
     # In many installs the python-monascaclient is available in a venv, switch to the most common location
-    activate_this = '/opt/monasca/bin/activate_this.py'
+    activate_this = os.path.realpath('/opt/monasca/bin/activate_this.py')
     try:
         execfile(activate_this, dict(__file__=activate_this))
         from monascaclient import client
