@@ -14,20 +14,20 @@
     undetermined_actions:
       - "{{default_notification.notification_method_id}}"
   with_items:
-    - { name: "Rabbitmq Queue Depth",
-        description: "Alarm on many messages in the queue",
+    - { name: "RabbitMQ Queue Depth",
+        description: "Alarms when the depth of the message queue is high",
         expression: "avg(rabbitmq.queue.messages) > 10 times 3",
         severity: "MEDIUM",
         match_by: [queue, hostname]}
-    - { name: "Mysql Slow queries",
-        description: "Alert when many slow queries are reported",
+    - { name: "MySQL Slow Query Rate",
+        description: "Alarms when the slow query rate is high",
         expression: "avg(mysql.performance.slow_queries) > 10 times 3"}
-    - { name: "Apache status",
-        description: "Alarms on failure to reach the Apache status url",
+    - { name: "Apache Status",
+        description: "Alarms on failure to reach the Apache status endpoint",
         expression: "apache.status > 0",
         severity: "HIGH"}
-    - { name: "Apache no idle workers",
-        description: "Alarms when there are no idle apache workers",
+    - { name: "Apache Idle Worker Count",
+        description: "Alarms when there are no idle workers in the Apache server",
         expression: "avg(apache.performance.idle_worker_count) < 1 times 3",
         severity: "MEDIUM"}
-    - { name: "NTP time sync", description: "Alarms when ntp falls 5 seconds out of sync", expression: "ntp.offset > 5 or ntp.offset < -5"}
+    - { name: "NTP Time Sync", description: "Alarms when the NTP time offset is high", expression: "ntp.offset > 5 or ntp.offset < -5"}

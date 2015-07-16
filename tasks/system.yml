@@ -14,15 +14,15 @@
     undetermined_actions:
       - "{{default_notification.notification_method_id}}"
   with_items:
-    - { name: "Host Alive Alarm", severity: "HIGH", expression: "host_alive_status > 0", match_by: ["target_host", "hostname"]}
-    - { name: "Http Status Alarm", severity: "HIGH", expression: "http_status > 0", match_by: ["service", "component", "hostname", "url"] }
-    - { name: "High CPU usage", expression: "avg(cpu.idle_perc) < 10 times 3" }
-    - { name: "Disk Inode Usage", expression: "disk.inode_used_perc > 90", match_by: ["hostname", "device"] }
-    - { name: "Disk Usage", expression: "disk.space_used_perc > 90", match_by: ["hostname", "device"] }
-    - { name: "Memory usage", severity: "MEDIUM", expression: "avg(mem.usable_perc) < 10 times 3" }
-    - { name: "Network Errors", severity: "MEDIUM", expression: "net.in_errors > 5 or net.out_errors > 5" }
-    - { name: "Process not found",
-        description: "No pids found for the process_name",
+    - { name: "Host Status", description: "Alarms when the specified host is down or not reachable", severity: "HIGH", expression: "host_alive_status > 0", match_by: ["target_host", "hostname"]}
+    - { name: "HTTP Status", description: "Alarms when the specified HTTP endpoint is down or not reachable", severity: "HIGH", expression: "http_status > 0", match_by: ["service", "component", "hostname", "url"] }
+    - { name: "CPU Usage", description: "Alarms when CPU usage is high", expression: "avg(cpu.idle_perc) < 10 times 3" }
+    - { name: "Disk Inode Usage", description: "Alarms when disk inode usage is high", expression: "disk.inode_used_perc > 90", match_by: ["hostname", "device"] }
+    - { name: "Disk Usage", description: "Alarms when disk usage is high", expression: "disk.space_used_perc > 90", match_by: ["hostname", "device"] }
+    - { name: "Memory Usage", description: "Alarms when memory usage is high", severity: "MEDIUM", expression: "avg(mem.usable_perc) < 10 times 3" }
+    - { name: "Network Errors", description: "Alarms when either incoming or outgoing network errors are high", severity: "MEDIUM", expression: "net.in_errors > 5 or net.out_errors > 5" }
+    - { name: "Process Check",
+        description: "Alarms when the specified process is not running",
         severity: "HIGH",
         expression: "process.pid_count < 1",
         match_by: ["process_name", "hostname"] }

@@ -12,6 +12,7 @@
     - system_alarms
     - monasca_alarms
     - openstack_alarms
+    - service_alarms
   register: default_notification
 
 # Include the various alarm sets
