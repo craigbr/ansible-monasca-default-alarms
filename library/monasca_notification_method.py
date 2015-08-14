@@ -1,5 +1,5 @@
 #!/usr/bin/python
-# ©Copyright 2015 Hewlett-Packard Development Company, L.P.
+# (C) Copyright 2015 Hewlett-Packard Development Company, L.P.
 
 DOCUMENTATION = '''
 ---
