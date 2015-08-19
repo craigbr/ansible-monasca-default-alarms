@@ -17,7 +17,7 @@
     undetermined_actions:
       - "{{default_notification.notification_method_id}}"
   with_items:
-    - { name: "Host Status", description: "Alarms when the specified host is down or not reachable", severity: "HIGH", expression: "host_alive_status > 0", match_by: ["target_host", "hostname"]}
+    - { name: "Host Status", description: "Alarms when the specified host is down or not reachable", severity: "HIGH", expression: "host_alive_status > 0" }
     - { name: "HTTP Status", description: "Alarms when the specified HTTP endpoint is down or not reachable", severity: "HIGH", expression: "http_status > 0", match_by: ["service", "component", "hostname", "url"] }
     - { name: "CPU Usage", description: "Alarms when CPU usage is high", expression: "avg(cpu.idle_perc) < 10 times 3" }
     - { name: "Disk Inode Usage", description: "Alarms when disk inode usage is high", expression: "disk.inode_used_perc > 90", match_by: ["hostname", "device"] }
